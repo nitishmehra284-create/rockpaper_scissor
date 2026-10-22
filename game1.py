@@ -1,22 +1,32 @@
+
+
 import random
 
-computer=random.randint(1,99)
-tries=0
+choices = ["rock", "paper", "scissor"]
+
 while True:
-    tries=tries+1
-    human=int(input("guess your number between 1-99:"))
-    
-    if human<1 or human >99:
-        print("choose number bewteen range")
-        continue
-    if human == computer:
-        print(f"congretulaton you won 🎉🎊 in tries{tries}")
+    user = input("\nEnter Rock, Paper, Scissor or Exit: ").lower()
+
+    if user == "exit":
+        print("Thanks for playing! 👋")
         break
-        
-    elif human>computer:
-        print("sorry wrong guess go lower")
-    elif human<computer:
-        print("sorry wrong guess go higher ")
-        
-    
-    
+
+    if user not in choices:
+        print("Invalid choice! Try again 🥵")
+        continue
+
+    computer = random.choice(choices)
+
+    print("You chose:", user)
+    print("Computer chose:", computer)
+
+    if user == computer:
+        print("It's a Draw 🤝")
+
+    elif (user == "rock" and computer == "scissor") or \
+         (user == "paper" and computer == "rock") or \
+         (user == "scissor" and computer == "paper"):
+        print("You Win 🎉")
+
+    else:
+        print("Computer Wins 🎊")
